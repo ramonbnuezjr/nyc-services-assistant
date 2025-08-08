@@ -19,6 +19,7 @@ from datetime import datetime
 import pandas as pd
 
 from src.ingest.data_processor import process_documents, EmbeddingClient
+from src.ingest.chunker import chunk_documents
 from src.retrieve.vector_store import init_vector_store, add_documents, query_vector_store
 from src.models.llm_client import create_llm_client
 from src.config import config
@@ -244,12 +245,17 @@ class BaselineEvaluator:
             document_texts = [doc["text"] for doc in self.documents]
             records = process_documents(document_texts, chunk_size=200, overlap=50)
             
-            # Add service metadata to records
-            for i, record in enumerate(records):
-                # Find which document this chunk came from
-                doc_index = i // 2  # Rough mapping (each doc might produce multiple chunks)
-                if doc_index < len(self.documents):
-                    record["metadata"]["service"] = self.documents[doc_index]["service"]
+            # Add service metadata to records with proper chunk-to-document mapping
+            chunk_index = 0
+            for doc_idx, doc in enumerate(self.documents):
+                # Process this document to see how many chunks it produces
+                doc_chunks = chunk_documents([doc["text"]], chunk_size=200, overlap=50)
+                
+                # Assign the correct service to each chunk from this document
+                for _ in doc_chunks:
+                    if chunk_index < len(records):
+                        records[chunk_index]["metadata"]["service"] = doc["service"]
+                        chunk_index += 1
             
             if not records:
                 print("❌ No records generated from documents")

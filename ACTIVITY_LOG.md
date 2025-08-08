@@ -110,4 +110,42 @@
 - **SNAP Service**: 🟡 Improving (25% success, up from 0%)
 - **Other Services**: ❌ Need targeted improvements
 
-**Next Action:** Continue improving service classification for Medicaid, Cash Assistance, and Childcare to reach 50-60% MVP target 
+**Next Action:** Continue improving service classification for Medicaid, Cash Assistance, and Childcare to reach 50-60% MVP target
+
+## Session 5: Critical Bug Fix & Major Breakthrough (2025-08-08)
+
+### 🚀 MASSIVE SUCCESS: 25% → 87% Success Rate!
+
+**Root Cause Identified & Fixed:**
+- ✅ **Critical Bug**: Document service metadata mapping was incorrectly labeling services
+- ✅ **Medicaid documents** labeled as "snap" instead of "medicaid" 
+- ✅ **Cash Assistance documents** labeled as "snap" instead of "cash_assistance"
+- ✅ **Childcare documents** labeled as "medicaid" instead of "childcare"
+
+**Technical Fix:**
+- ✅ **Fixed chunk-to-document mapping** in `baseline_evaluation.py`
+- ✅ **Replaced flawed `i // 2` logic** with proper document-chunk correlation
+- ✅ **Added proper import** for `chunk_documents` function
+
+**Results Achieved:**
+```
+🎯 Self-Service Success Rate: 87.0% (Target: ≥90%)
+📈 Improvement: +62 percentage points (from 25%)
+✅ Successful Queries: 87/100
+❌ Failed Queries: 13/100
+
+🔍 Success Rate by Service:
+  Unemployment: 100.0% (20/20) ✅ PERFECT
+  SNAP: 95.0% (19/20) 📈 +70% improvement  
+  Medicaid: 90.0% (18/20) 📈 +90% improvement
+  Cash Assistance: 80.0% (16/20) 📈 +80% improvement
+  Childcare: 70.0% (14/20) 📈 +70% improvement
+```
+
+**Current Status:** 
+- **MVP Target**: ✅ **EXCEEDED** (50-60% → 87%)
+- **Production Target**: 🎯 Only 3 percentage points from 90%
+- **Infrastructure**: ✅ Solid foundation with proper service classification
+- **All Services**: 🟢 Now working with dramatic improvements
+
+**Next Action:** Fine-tune remaining 3% to reach 90% production target 
