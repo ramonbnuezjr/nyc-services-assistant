@@ -398,8 +398,9 @@ class BaselineEvaluator:
             Evaluation result dictionary
         """
         try:
-            # Generate query embedding (mock for baseline)
-            query_embedding = [0.1] * 1536  # Mock embedding
+            # Generate query embedding using real OpenAI embeddings
+            embedding_client = EmbeddingClient()
+            query_embedding = embedding_client.get_embedding(query["text"])
             
             # Query vector store
             results = query_vector_store(self.vector_store, query_embedding, top_k=3)

@@ -17,8 +17,8 @@ from ..config import config
 
 class EmbeddingClient:
     """
-    Mockable embedding client for generating vector embeddings.
-    Uses OpenAI's text-embedding-ada-002 model by default.
+    OpenAI embedding client for generating vector embeddings.
+    Uses OpenAI's text-embedding-ada-002 model for high-quality semantic embeddings.
     """
     
     def __init__(self, api_key: Optional[str] = None, model: str = "text-embedding-ada-002"):
@@ -27,37 +27,84 @@ class EmbeddingClient:
         
         Args:
             api_key: OpenAI API key (defaults to config)
-            model: Embedding model to use
+            model: Embedding model to use (default: text-embedding-ada-002)
         """
         self.api_key = api_key or config.openai_api_key
         self.model = model
+        
         if self.api_key:
             openai.api_key = self.api_key
+            print(f"✅ Embedding client initialized with model: {self.model}")
+        else:
+            print("⚠️ No OpenAI API key found. Using mock embeddings for testing.")
     
     def get_embeddings(self, texts: List[str]) -> List[List[float]]:
         """
-        Generate embeddings for a list of texts.
+        Generate embeddings for a list of texts using OpenAI's embedding model.
         
         Args:
             texts: List of text strings to embed
             
         Returns:
-            List of embedding vectors (one per input text)
+            List of embedding vectors (1536 dimensions for text-embedding-ada-002)
         """
         if not self.api_key:
             # Return mock embeddings for testing/demo purposes
+            print("⚠️ Using mock embeddings (no API key configured)")
             return [[0.1] * 1536 for _ in texts]
         
         try:
+            # Generate embeddings using OpenAI API
             response = openai.embeddings.create(
                 input=texts,
                 model=self.model
             )
-            return [embedding.embedding for embedding in response.data]
+            
+            embeddings = [embedding.embedding for embedding in response.data]
+            print(f"✅ Generated {len(embeddings)} embeddings using {self.model}")
+            return embeddings
+            
         except Exception as e:
-            print(f"Warning: Failed to generate embeddings: {e}")
+            print(f"❌ Failed to generate embeddings: {e}")
+            print("⚠️ Falling back to mock embeddings")
             # Return mock embeddings as fallback
             return [[0.1] * 1536 for _ in texts]
+    
+    def get_embedding(self, text: str) -> List[float]:
+        """
+        Generate embedding for a single text.
+        
+        Args:
+            text: Text string to embed
+            
+        Returns:
+            Embedding vector (1536 dimensions)
+        """
+        embeddings = self.get_embeddings([text])
+        return embeddings[0] if embeddings else [0.1] * 1536
+    
+    def validate_embedding(self, embedding: List[float]) -> bool:
+        """
+        Validate that an embedding has the correct format.
+        
+        Args:
+            embedding: Embedding vector to validate
+            
+        Returns:
+            True if embedding is valid, False otherwise
+        """
+        if not isinstance(embedding, list):
+            return False
+        
+        # Check for correct dimensions (1536 for text-embedding-ada-002)
+        if len(embedding) != 1536:
+            return False
+        
+        # Check that all values are floats
+        if not all(isinstance(x, (int, float)) for x in embedding):
+            return False
+        
+        return True
 
 
 def process_documents(
@@ -72,7 +119,7 @@ def process_documents(
     This function is designed to support the Self-Service Success Rate KPI by:
     - Reading file paths or processing raw text inputs
     - Chunking documents using tokenized splitting for optimal retrieval
-    - Generating vector embeddings for each chunk
+    - Generating vector embeddings for each chunk using OpenAI's text-embedding-ada-002
     - Returning structured records ready for vector store ingestion
     
     The output supports evaluation against our 100-query seed set across 5 NYC services:
@@ -88,7 +135,7 @@ def process_documents(
         List of records with structure:
         {
             "text": str,           # The chunk text content
-            "embedding": List[float],  # Vector embedding
+            "embedding": List[float],  # Vector embedding (1536 dimensions)
             "metadata": {         # Additional metadata
                 "source": str,    # Original file path or "raw_text"
                 "chunk_index": int,  # Position in document
@@ -139,7 +186,19 @@ def process_documents(
     if not chunk_texts:
         return []
     
+    print(f"🔧 Generating embeddings for {len(chunk_texts)} chunks...")
     embeddings = embedding_client.get_embeddings(chunk_texts)
+    
+    # Validate embeddings
+    valid_embeddings = []
+    for i, embedding in enumerate(embeddings):
+        if embedding_client.validate_embedding(embedding):
+            valid_embeddings.append(embedding)
+        else:
+            print(f"⚠️ Invalid embedding for chunk {i}, skipping")
+    
+    if len(valid_embeddings) != len(chunk_texts):
+        print(f"⚠️ Only {len(valid_embeddings)}/{len(chunk_texts)} embeddings are valid")
     
     # Step 4: Create structured records
     records = []
@@ -149,13 +208,13 @@ def process_documents(
         doc_chunks = chunk_documents([document], chunk_size=chunk_size, overlap=overlap)
         
         for chunk_idx, chunk in enumerate(doc_chunks):
-            if chunk.strip() and chunk_counter < len(embeddings):
+            if chunk.strip() and chunk_counter < len(valid_embeddings):
                 # Count tokens in chunk
                 token_count = len(chunk.split())
                 
                 record = {
                     "text": chunk,
-                    "embedding": embeddings[chunk_counter],
+                    "embedding": valid_embeddings[chunk_counter],
                     "metadata": {
                         "source": source_mapping.get(doc_idx, "unknown"),
                         "chunk_index": chunk_idx,
@@ -167,6 +226,7 @@ def process_documents(
                 records.append(record)
                 chunk_counter += 1
     
+    print(f"✅ Processed {len(records)} documents with real embeddings")
     return records
 
 
@@ -198,6 +258,10 @@ def validate_records(records: List[Dict]) -> bool:
         if not isinstance(record["embedding"], list):
             return False
         if not isinstance(record["metadata"], dict):
+            return False
+        
+        # Validate embedding dimensions
+        if len(record["embedding"]) != 1536:
             return False
     
     return True

@@ -53,4 +53,21 @@
 - Included KPI tracking tests for Self-Service Success Rate ≥ 90%
 - All 8 integration tests passing, pipeline ready for baseline evaluation
 - Validates retrieval accuracy for 100-query evaluation set
-**Next Action:** Run baseline evaluation with 100 synthetic queries to measure Self-Service Success Rate 
+**Next Action:** Run baseline evaluation with 100 synthetic queries to measure Self-Service Success Rate
+
+## Session: 2025-08-08 Baseline Evaluation Complete
+**Goal:** Run 100-query baseline evaluation to measure current Self-Service Success Rate  
+**Outcome:** Established baseline of 40.0% success rate with clear improvement roadmap  
+**Prompt Used:** "Run the 100-query baseline evaluation to measure current Self-Service Success Rate."  
+**Implementation Details:**
+- Created `src/tests/baseline_evaluation.py` with comprehensive evaluation framework
+- Loaded 100 synthetic queries from PROJECT_SPEC.md across 5 NYC services
+- Implemented proper service metadata tracking for accurate evaluation
+- Measured Self-Service Success Rate with detailed service breakdown
+- **Baseline Results:** 40.0% success rate (40/100 queries successful)
+- **Service Breakdown:** Unemployment/SNAP 100%, Medicaid/Cash/Childcare 0%
+- **Gap Analysis:** 50 percentage points to reach ≥ 90% target
+- Identified mock embedding limitation as primary improvement opportunity
+- Saved detailed results to `baseline_evaluation_results.json`
+- Established clear baseline for tracking progress toward KPI target
+**Next Action:** Implement real embeddings and LLM integration to improve success rate 
