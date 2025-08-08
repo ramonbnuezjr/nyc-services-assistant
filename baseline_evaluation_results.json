@@ -1,0 +1,3537 @@
+{
+  "total_queries": 100,
+  "successful_queries": 40,
+  "failed_queries": 60,
+  "success_rate": 40.0,
+  "target_success_rate": 90.0,
+  "evaluation_date": "2025-08-08T09:19:03.744021",
+  "service_breakdown": {
+    "unemployment": {
+      "total": 20,
+      "successful": 20,
+      "success_rate": 100.0
+    },
+    "snap": {
+      "total": 20,
+      "successful": 20,
+      "success_rate": 100.0
+    },
+    "medicaid": {
+      "total": 20,
+      "successful": 0,
+      "success_rate": 0.0
+    },
+    "cash_assistance": {
+      "total": 20,
+      "successful": 0,
+      "success_rate": 0.0
+    },
+    "childcare": {
+      "total": 20,
+      "successful": 0,
+      "success_rate": 0.0
+    }
+  },
+  "detailed_results": [
+    {
+      "query_text": "How do I apply for unemployment benefits in NYC?",
+      "expected_service": "unemployment",
+      "retrieved_service": "unemployment",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "service": "unemployment",
+            "overlap": 50,
+            "source": "raw_text",
+            "token_count": 32,
+            "chunk_size": 200,
+            "chunk_index": 0
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "token_count": 27,
+            "source": "raw_text",
+            "chunk_size": 200,
+            "service": "snap",
+            "overlap": 50,
+            "chunk_index": 0
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What documents are required for New York State unemployment?",
+      "expected_service": "unemployment",
+      "retrieved_service": "unemployment",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "service": "unemployment",
+            "overlap": 50,
+            "chunk_size": 200,
+            "source": "raw_text",
+            "chunk_index": 0,
+            "token_count": 32
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_index": 0,
+            "source": "raw_text",
+            "overlap": 50,
+            "token_count": 27,
+            "service": "snap",
+            "chunk_size": 200
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Can I file an unemployment claim online from Staten Island?",
+      "expected_service": "unemployment",
+      "retrieved_service": "unemployment",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "overlap": 50,
+            "token_count": 32,
+            "chunk_index": 0,
+            "source": "raw_text",
+            "service": "unemployment",
+            "chunk_size": 200
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "token_count": 27,
+            "chunk_index": 0,
+            "overlap": 50,
+            "chunk_size": 200,
+            "source": "raw_text",
+            "service": "snap"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What's the processing time for unemployment insurance?",
+      "expected_service": "unemployment",
+      "retrieved_service": "unemployment",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "service": "unemployment",
+            "chunk_size": 200,
+            "overlap": 50,
+            "token_count": 32,
+            "chunk_index": 0,
+            "source": "raw_text"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "source": "raw_text",
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "service": "snap",
+            "token_count": 27,
+            "overlap": 50
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Who qualifies for partial unemployment benefits?",
+      "expected_service": "unemployment",
+      "retrieved_service": "unemployment",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "source": "raw_text",
+            "overlap": 50,
+            "token_count": 32,
+            "service": "unemployment",
+            "chunk_index": 0,
+            "chunk_size": 200
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "token_count": 27,
+            "chunk_size": 200,
+            "source": "raw_text",
+            "overlap": 50,
+            "service": "snap",
+            "chunk_index": 0
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I check my weekly unemployment payment status?",
+      "expected_service": "unemployment",
+      "retrieved_service": "unemployment",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "source": "raw_text",
+            "overlap": 50,
+            "token_count": 32,
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "service": "unemployment"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "service": "snap",
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "token_count": 27,
+            "overlap": 50,
+            "source": "raw_text"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What happens if my unemployment claim is denied?",
+      "expected_service": "unemployment",
+      "retrieved_service": "unemployment",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "token_count": 32,
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "source": "raw_text",
+            "overlap": 50,
+            "service": "unemployment"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "source": "raw_text",
+            "overlap": 50,
+            "token_count": 27,
+            "chunk_index": 0,
+            "service": "snap",
+            "chunk_size": 200
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I appeal an unemployment benefits decision?",
+      "expected_service": "unemployment",
+      "retrieved_service": "unemployment",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "service": "unemployment",
+            "chunk_size": 200,
+            "token_count": 32,
+            "overlap": 50,
+            "chunk_index": 0,
+            "source": "raw_text"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "overlap": 50,
+            "service": "snap",
+            "chunk_size": 200,
+            "token_count": 27,
+            "chunk_index": 0,
+            "source": "raw_text"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Are gig workers eligible for unemployment benefits?",
+      "expected_service": "unemployment",
+      "retrieved_service": "unemployment",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "token_count": 32,
+            "source": "raw_text",
+            "overlap": 50,
+            "service": "unemployment",
+            "chunk_size": 200,
+            "chunk_index": 0
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "overlap": 50,
+            "chunk_index": 0,
+            "service": "snap",
+            "source": "raw_text",
+            "chunk_size": 200,
+            "token_count": 27
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I update my address on my unemployment account?",
+      "expected_service": "unemployment",
+      "retrieved_service": "unemployment",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "token_count": 32,
+            "source": "raw_text",
+            "chunk_index": 0,
+            "service": "unemployment",
+            "chunk_size": 200,
+            "overlap": 50
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "token_count": 27,
+            "source": "raw_text",
+            "service": "snap",
+            "chunk_size": 200,
+            "overlap": 50,
+            "chunk_index": 0
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What is the maximum unemployment benefit amount in NYC?",
+      "expected_service": "unemployment",
+      "retrieved_service": "unemployment",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "token_count": 32,
+            "service": "unemployment",
+            "source": "raw_text",
+            "overlap": 50
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "overlap": 50,
+            "source": "raw_text",
+            "chunk_index": 0,
+            "token_count": 27,
+            "service": "snap",
+            "chunk_size": 200
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Can I work part-time while receiving unemployment?",
+      "expected_service": "unemployment",
+      "retrieved_service": "unemployment",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "source": "raw_text",
+            "token_count": 32,
+            "chunk_index": 0,
+            "service": "unemployment",
+            "chunk_size": 200,
+            "overlap": 50
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "source": "raw_text",
+            "service": "snap",
+            "chunk_index": 0,
+            "overlap": 50,
+            "chunk_size": 200,
+            "token_count": 27
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I report earnings while on unemployment?",
+      "expected_service": "unemployment",
+      "retrieved_service": "unemployment",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_index": 0,
+            "service": "unemployment",
+            "source": "raw_text",
+            "chunk_size": 200,
+            "overlap": 50,
+            "token_count": 32
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "token_count": 27,
+            "source": "raw_text",
+            "service": "snap",
+            "overlap": 50,
+            "chunk_size": 200,
+            "chunk_index": 0
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What's 'Extended Duration Benefits' and who qualifies?",
+      "expected_service": "unemployment",
+      "retrieved_service": "unemployment",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "source": "raw_text",
+            "overlap": 50,
+            "chunk_size": 200,
+            "token_count": 32,
+            "chunk_index": 0,
+            "service": "unemployment"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "service": "snap",
+            "source": "raw_text",
+            "token_count": 27,
+            "overlap": 50
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I submit my weekly certification for benefits?",
+      "expected_service": "unemployment",
+      "retrieved_service": "unemployment",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "service": "unemployment",
+            "source": "raw_text",
+            "chunk_size": 200,
+            "token_count": 32,
+            "chunk_index": 0,
+            "overlap": 50
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_size": 200,
+            "source": "raw_text",
+            "overlap": 50,
+            "service": "snap",
+            "token_count": 27,
+            "chunk_index": 0
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Are independent contractors covered?",
+      "expected_service": "unemployment",
+      "retrieved_service": "unemployment",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "source": "raw_text",
+            "chunk_size": 200,
+            "overlap": 50,
+            "service": "unemployment",
+            "chunk_index": 0,
+            "token_count": 32
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_index": 0,
+            "overlap": 50,
+            "service": "snap",
+            "token_count": 27,
+            "chunk_size": 200,
+            "source": "raw_text"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Do I need an SSN to apply?",
+      "expected_service": "unemployment",
+      "retrieved_service": "unemployment",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "token_count": 32,
+            "chunk_size": 200,
+            "overlap": 50,
+            "chunk_index": 0,
+            "service": "unemployment",
+            "source": "raw_text"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "source": "raw_text",
+            "service": "snap",
+            "token_count": 27,
+            "overlap": 50,
+            "chunk_index": 0,
+            "chunk_size": 200
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Can I get retroactive unemployment payments?",
+      "expected_service": "unemployment",
+      "retrieved_service": "unemployment",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "overlap": 50,
+            "token_count": 32,
+            "service": "unemployment",
+            "source": "raw_text"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "source": "raw_text",
+            "service": "snap",
+            "chunk_size": 200,
+            "overlap": 50,
+            "token_count": 27,
+            "chunk_index": 0
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Where can I find phone support for unemployment issues?",
+      "expected_service": "unemployment",
+      "retrieved_service": "unemployment",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "overlap": 50,
+            "service": "unemployment",
+            "source": "raw_text",
+            "token_count": 32,
+            "chunk_size": 200,
+            "chunk_index": 0
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_size": 200,
+            "token_count": 27,
+            "source": "raw_text",
+            "overlap": 50,
+            "chunk_index": 0,
+            "service": "snap"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How long do I have to file after losing my job?",
+      "expected_service": "unemployment",
+      "retrieved_service": "unemployment",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "source": "raw_text",
+            "token_count": 32,
+            "chunk_size": 200,
+            "service": "unemployment",
+            "chunk_index": 0,
+            "overlap": 50
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "overlap": 50,
+            "chunk_size": 200,
+            "service": "snap",
+            "source": "raw_text",
+            "token_count": 27,
+            "chunk_index": 0
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I apply for SNAP benefits in NYC?",
+      "expected_service": "snap",
+      "retrieved_service": "snap",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "source": "raw_text",
+            "chunk_size": 200,
+            "service": "unemployment",
+            "overlap": 50,
+            "chunk_index": 0,
+            "token_count": 32
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "token_count": 27,
+            "overlap": 50,
+            "service": "snap",
+            "chunk_index": 0,
+            "source": "raw_text",
+            "chunk_size": 200
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What income limits apply to SNAP in New York?",
+      "expected_service": "snap",
+      "retrieved_service": "snap",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_index": 0,
+            "source": "raw_text",
+            "service": "unemployment",
+            "overlap": 50,
+            "token_count": 32,
+            "chunk_size": 200
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "source": "raw_text",
+            "overlap": 50,
+            "chunk_size": 200,
+            "token_count": 27,
+            "chunk_index": 0,
+            "service": "snap"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Can I pre-screen for SNAP eligibility online?",
+      "expected_service": "snap",
+      "retrieved_service": "snap",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "service": "unemployment",
+            "overlap": 50,
+            "token_count": 32,
+            "source": "raw_text"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_index": 0,
+            "overlap": 50,
+            "source": "raw_text",
+            "token_count": 27,
+            "chunk_size": 200,
+            "service": "snap"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What documents do I need for a SNAP interview?",
+      "expected_service": "snap",
+      "retrieved_service": "snap",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "overlap": 50,
+            "source": "raw_text",
+            "token_count": 32,
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "service": "unemployment"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_size": 200,
+            "service": "snap",
+            "overlap": 50,
+            "chunk_index": 0,
+            "token_count": 27,
+            "source": "raw_text"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How long does SNAP application processing take?",
+      "expected_service": "snap",
+      "retrieved_service": "snap",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "overlap": 50,
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "source": "raw_text",
+            "service": "unemployment",
+            "token_count": 32
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "source": "raw_text",
+            "overlap": 50,
+            "token_count": 27,
+            "service": "snap"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I check my EBT balance?",
+      "expected_service": "snap",
+      "retrieved_service": "snap",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "source": "raw_text",
+            "overlap": 50,
+            "token_count": 32,
+            "service": "unemployment",
+            "chunk_index": 0,
+            "chunk_size": 200
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "source": "raw_text",
+            "chunk_index": 0,
+            "service": "snap",
+            "chunk_size": 200,
+            "overlap": 50,
+            "token_count": 27
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Can I use EBT at local farmers' markets?",
+      "expected_service": "snap",
+      "retrieved_service": "snap",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_size": 200,
+            "overlap": 50,
+            "service": "unemployment",
+            "source": "raw_text",
+            "token_count": 32,
+            "chunk_index": 0
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "overlap": 50,
+            "chunk_size": 200,
+            "token_count": 27,
+            "source": "raw_text",
+            "service": "snap",
+            "chunk_index": 0
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I report a change in household size?",
+      "expected_service": "snap",
+      "retrieved_service": "snap",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_index": 0,
+            "token_count": 32,
+            "chunk_size": 200,
+            "source": "raw_text",
+            "service": "unemployment",
+            "overlap": 50
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "service": "snap",
+            "chunk_size": 200,
+            "token_count": 27,
+            "chunk_index": 0,
+            "source": "raw_text",
+            "overlap": 50
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What happens if my SNAP case is closed?",
+      "expected_service": "snap",
+      "retrieved_service": "snap",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_index": 0,
+            "token_count": 32,
+            "chunk_size": 200,
+            "service": "unemployment",
+            "overlap": 50,
+            "source": "raw_text"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "overlap": 50,
+            "token_count": 27,
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "source": "raw_text",
+            "service": "snap"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I reapply for SNAP after denial?",
+      "expected_service": "snap",
+      "retrieved_service": "snap",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_size": 200,
+            "service": "unemployment",
+            "overlap": 50,
+            "source": "raw_text",
+            "token_count": 32,
+            "chunk_index": 0
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "source": "raw_text",
+            "chunk_size": 200,
+            "token_count": 27,
+            "service": "snap",
+            "chunk_index": 0,
+            "overlap": 50
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Are college students eligible for SNAP?",
+      "expected_service": "snap",
+      "retrieved_service": "snap",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "service": "unemployment",
+            "source": "raw_text",
+            "token_count": 32,
+            "overlap": 50
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "service": "snap",
+            "overlap": 50,
+            "source": "raw_text",
+            "chunk_size": 200,
+            "token_count": 27,
+            "chunk_index": 0
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I appeal a SNAP decision?",
+      "expected_service": "snap",
+      "retrieved_service": "snap",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "service": "unemployment",
+            "overlap": 50,
+            "source": "raw_text",
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "token_count": 32
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "service": "snap",
+            "chunk_index": 0,
+            "token_count": 27,
+            "chunk_size": 200,
+            "source": "raw_text",
+            "overlap": 50
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Can mixed-status families apply?",
+      "expected_service": "snap",
+      "retrieved_service": "snap",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "overlap": 50,
+            "service": "unemployment",
+            "source": "raw_text",
+            "chunk_size": 200,
+            "token_count": 32,
+            "chunk_index": 0
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "token_count": 27,
+            "chunk_size": 200,
+            "source": "raw_text",
+            "overlap": 50,
+            "chunk_index": 0,
+            "service": "snap"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What expenses count toward SNAP income deductions?",
+      "expected_service": "snap",
+      "retrieved_service": "snap",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_index": 0,
+            "token_count": 32,
+            "chunk_size": 200,
+            "service": "unemployment",
+            "source": "raw_text",
+            "overlap": 50
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "source": "raw_text",
+            "chunk_size": 200,
+            "service": "snap",
+            "overlap": 50,
+            "token_count": 27,
+            "chunk_index": 0
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I find my SNAP case worker's contact?",
+      "expected_service": "snap",
+      "retrieved_service": "snap",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "token_count": 32,
+            "chunk_index": 0,
+            "service": "unemployment",
+            "chunk_size": 200,
+            "overlap": 50,
+            "source": "raw_text"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "overlap": 50,
+            "token_count": 27,
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "service": "snap",
+            "source": "raw_text"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I request replacement EBT card?",
+      "expected_service": "snap",
+      "retrieved_service": "snap",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "token_count": 32,
+            "overlap": 50,
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "source": "raw_text",
+            "service": "unemployment"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "overlap": 50,
+            "service": "snap",
+            "chunk_index": 0,
+            "token_count": 27,
+            "source": "raw_text",
+            "chunk_size": 200
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Can I use my SNAP benefits on groceries delivered?",
+      "expected_service": "snap",
+      "retrieved_service": "snap",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "service": "unemployment",
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "source": "raw_text",
+            "token_count": 32,
+            "overlap": 50
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_index": 0,
+            "overlap": 50,
+            "service": "snap",
+            "chunk_size": 200,
+            "source": "raw_text",
+            "token_count": 27
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Are benefits loaded monthly or biweekly?",
+      "expected_service": "snap",
+      "retrieved_service": "snap",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "service": "unemployment",
+            "chunk_index": 0,
+            "overlap": 50,
+            "chunk_size": 200,
+            "source": "raw_text",
+            "token_count": 32
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "overlap": 50,
+            "chunk_size": 200,
+            "source": "raw_text",
+            "token_count": 27,
+            "chunk_index": 0,
+            "service": "snap"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What outreach programs exist for seniors on SNAP?",
+      "expected_service": "snap",
+      "retrieved_service": "snap",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "service": "unemployment",
+            "overlap": 50,
+            "token_count": 32,
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "source": "raw_text"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "token_count": 27,
+            "source": "raw_text",
+            "overlap": 50,
+            "service": "snap"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I report lost SNAP benefits?",
+      "expected_service": "snap",
+      "retrieved_service": "snap",
+      "is_successful": true,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_size": 200,
+            "service": "unemployment",
+            "overlap": 50,
+            "chunk_index": 0,
+            "source": "raw_text",
+            "token_count": 32
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "token_count": 27,
+            "source": "raw_text",
+            "overlap": 50,
+            "chunk_size": 200,
+            "service": "snap",
+            "chunk_index": 0
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I apply for Medicaid in NYC?",
+      "expected_service": "medicaid",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "overlap": 50,
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "service": "unemployment",
+            "source": "raw_text",
+            "token_count": 32
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "token_count": 27,
+            "overlap": 50,
+            "source": "raw_text",
+            "service": "snap",
+            "chunk_index": 0,
+            "chunk_size": 200
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What income qualifies me for Medicaid?",
+      "expected_service": "medicaid",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_size": 200,
+            "service": "unemployment",
+            "chunk_index": 0,
+            "token_count": 32,
+            "source": "raw_text",
+            "overlap": 50
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "token_count": 27,
+            "source": "raw_text",
+            "service": "snap",
+            "overlap": 50
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Can I enroll in Medicaid year-round?",
+      "expected_service": "medicaid",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "service": "unemployment",
+            "source": "raw_text",
+            "overlap": 50,
+            "token_count": 32
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "service": "snap",
+            "chunk_index": 0,
+            "overlap": 50,
+            "token_count": 27,
+            "chunk_size": 200,
+            "source": "raw_text"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I check my Medicaid application status?",
+      "expected_service": "medicaid",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_index": 0,
+            "overlap": 50,
+            "source": "raw_text",
+            "service": "unemployment",
+            "token_count": 32,
+            "chunk_size": 200
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "token_count": 27,
+            "service": "snap",
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "overlap": 50,
+            "source": "raw_text"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What documents are required for Medicaid?",
+      "expected_service": "medicaid",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "source": "raw_text",
+            "overlap": 50,
+            "chunk_index": 0,
+            "token_count": 32,
+            "service": "unemployment",
+            "chunk_size": 200
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_index": 0,
+            "token_count": 27,
+            "chunk_size": 200,
+            "overlap": 50,
+            "service": "snap",
+            "source": "raw_text"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I renew my Medicaid coverage?",
+      "expected_service": "medicaid",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "token_count": 32,
+            "source": "raw_text",
+            "chunk_size": 200,
+            "overlap": 50,
+            "chunk_index": 0,
+            "service": "unemployment"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "service": "snap",
+            "token_count": 27,
+            "chunk_index": 0,
+            "overlap": 50,
+            "chunk_size": 200,
+            "source": "raw_text"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What happens if I miss my renewal deadline?",
+      "expected_service": "medicaid",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_size": 200,
+            "source": "raw_text",
+            "chunk_index": 0,
+            "overlap": 50,
+            "service": "unemployment",
+            "token_count": 32
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "overlap": 50,
+            "service": "snap",
+            "token_count": 27,
+            "chunk_index": 0,
+            "source": "raw_text",
+            "chunk_size": 200
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Can I switch from Emergency Medicaid to full coverage?",
+      "expected_service": "medicaid",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "token_count": 32,
+            "service": "unemployment",
+            "source": "raw_text",
+            "chunk_index": 0,
+            "overlap": 50,
+            "chunk_size": 200
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "source": "raw_text",
+            "overlap": 50,
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "service": "snap",
+            "token_count": 27
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I add a newborn to my Medicaid plan?",
+      "expected_service": "medicaid",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "overlap": 50,
+            "service": "unemployment",
+            "source": "raw_text",
+            "chunk_size": 200,
+            "token_count": 32,
+            "chunk_index": 0
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_size": 200,
+            "service": "snap",
+            "chunk_index": 0,
+            "token_count": 27,
+            "source": "raw_text",
+            "overlap": 50
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What providers accept Medicaid in Brooklyn?",
+      "expected_service": "medicaid",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "source": "raw_text",
+            "overlap": 50,
+            "service": "unemployment",
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "token_count": 32
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "service": "snap",
+            "token_count": 27,
+            "source": "raw_text",
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "overlap": 50
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I request a Medicaid ID card replacement?",
+      "expected_service": "medicaid",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "source": "raw_text",
+            "token_count": 32,
+            "service": "unemployment",
+            "chunk_index": 0,
+            "overlap": 50,
+            "chunk_size": 200
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_size": 200,
+            "token_count": 27,
+            "source": "raw_text",
+            "overlap": 50,
+            "service": "snap",
+            "chunk_index": 0
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Are dental services covered?",
+      "expected_service": "medicaid",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "token_count": 32,
+            "source": "raw_text",
+            "overlap": 50,
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "service": "unemployment"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "token_count": 27,
+            "chunk_index": 0,
+            "overlap": 50,
+            "service": "snap",
+            "chunk_size": 200,
+            "source": "raw_text"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I appeal a Medicaid denial?",
+      "expected_service": "medicaid",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "source": "raw_text",
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "overlap": 50,
+            "service": "unemployment",
+            "token_count": 32
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "token_count": 27,
+            "chunk_size": 200,
+            "overlap": 50,
+            "source": "raw_text",
+            "chunk_index": 0,
+            "service": "snap"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Can I have Medicaid and marketplace insurance?",
+      "expected_service": "medicaid",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_index": 0,
+            "token_count": 32,
+            "chunk_size": 200,
+            "source": "raw_text",
+            "service": "unemployment",
+            "overlap": 50
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "source": "raw_text",
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "token_count": 27,
+            "overlap": 50,
+            "service": "snap"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I report a change in income?",
+      "expected_service": "medicaid",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "source": "raw_text",
+            "token_count": 32,
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "overlap": 50,
+            "service": "unemployment"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "source": "raw_text",
+            "chunk_index": 0,
+            "token_count": 27,
+            "overlap": 50,
+            "chunk_size": 200,
+            "service": "snap"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What long-term care services are covered?",
+      "expected_service": "medicaid",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_index": 0,
+            "overlap": 50,
+            "token_count": 32,
+            "service": "unemployment",
+            "source": "raw_text",
+            "chunk_size": 200
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "service": "snap",
+            "chunk_index": 0,
+            "source": "raw_text",
+            "chunk_size": 200,
+            "token_count": 27,
+            "overlap": 50
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I find transportation services under Medicaid?",
+      "expected_service": "medicaid",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_size": 200,
+            "source": "raw_text",
+            "service": "unemployment",
+            "chunk_index": 0,
+            "token_count": 32,
+            "overlap": 50
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_size": 200,
+            "service": "snap",
+            "chunk_index": 0,
+            "source": "raw_text",
+            "token_count": 27,
+            "overlap": 50
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What behavioral health services are included?",
+      "expected_service": "medicaid",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "token_count": 32,
+            "source": "raw_text",
+            "overlap": 50,
+            "service": "unemployment"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "overlap": 50,
+            "chunk_index": 0,
+            "service": "snap",
+            "chunk_size": 200,
+            "source": "raw_text",
+            "token_count": 27
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I get language interpretation for Medicaid services?",
+      "expected_service": "medicaid",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_index": 0,
+            "overlap": 50,
+            "service": "unemployment",
+            "token_count": 32,
+            "source": "raw_text",
+            "chunk_size": 200
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "service": "snap",
+            "source": "raw_text",
+            "token_count": 27,
+            "overlap": 50
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Can I keep Medicaid if I start working?",
+      "expected_service": "medicaid",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "overlap": 50,
+            "token_count": 32,
+            "source": "raw_text",
+            "chunk_index": 0,
+            "service": "unemployment",
+            "chunk_size": 200
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "token_count": 27,
+            "chunk_size": 200,
+            "source": "raw_text",
+            "service": "snap",
+            "overlap": 50,
+            "chunk_index": 0
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I apply for Cash Assistance in NYC?",
+      "expected_service": "cash_assistance",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "overlap": 50,
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "token_count": 32,
+            "service": "unemployment",
+            "source": "raw_text"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_size": 200,
+            "token_count": 27,
+            "source": "raw_text",
+            "service": "snap",
+            "chunk_index": 0,
+            "overlap": 50
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What's the income cutoff for Family Assistance?",
+      "expected_service": "cash_assistance",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "source": "raw_text",
+            "overlap": 50,
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "service": "unemployment",
+            "token_count": 32
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "overlap": 50,
+            "source": "raw_text",
+            "token_count": 27,
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "service": "snap"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How does Safety Net Assistance differ?",
+      "expected_service": "cash_assistance",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "source": "raw_text",
+            "token_count": 32,
+            "service": "unemployment",
+            "overlap": 50,
+            "chunk_size": 200,
+            "chunk_index": 0
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_index": 0,
+            "overlap": 50,
+            "service": "snap",
+            "chunk_size": 200,
+            "source": "raw_text",
+            "token_count": 27
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What documents are needed for a cash assistance interview?",
+      "expected_service": "cash_assistance",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "overlap": 50,
+            "chunk_size": 200,
+            "token_count": 32,
+            "service": "unemployment",
+            "source": "raw_text",
+            "chunk_index": 0
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_size": 200,
+            "token_count": 27,
+            "service": "snap",
+            "overlap": 50,
+            "source": "raw_text",
+            "chunk_index": 0
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How long does approval take?",
+      "expected_service": "cash_assistance",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_size": 200,
+            "source": "raw_text",
+            "token_count": 32,
+            "service": "unemployment",
+            "overlap": 50,
+            "chunk_index": 0
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "source": "raw_text",
+            "chunk_index": 0,
+            "token_count": 27,
+            "chunk_size": 200,
+            "service": "snap",
+            "overlap": 50
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Can I work while on cash assistance?",
+      "expected_service": "cash_assistance",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "overlap": 50,
+            "token_count": 32,
+            "source": "raw_text",
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "service": "unemployment"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "source": "raw_text",
+            "overlap": 50,
+            "service": "snap",
+            "token_count": 27
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I report earnings?",
+      "expected_service": "cash_assistance",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "service": "unemployment",
+            "token_count": 32,
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "overlap": 50,
+            "source": "raw_text"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_size": 200,
+            "source": "raw_text",
+            "overlap": 50,
+            "service": "snap",
+            "token_count": 27,
+            "chunk_index": 0
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What are the work requirements?",
+      "expected_service": "cash_assistance",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "overlap": 50,
+            "source": "raw_text",
+            "chunk_size": 200,
+            "service": "unemployment",
+            "token_count": 32,
+            "chunk_index": 0
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "service": "snap",
+            "source": "raw_text",
+            "token_count": 27,
+            "overlap": 50,
+            "chunk_index": 0,
+            "chunk_size": 200
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I check my cash assistance payment status?",
+      "expected_service": "cash_assistance",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "source": "raw_text",
+            "token_count": 32,
+            "overlap": 50,
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "service": "unemployment"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "overlap": 50,
+            "token_count": 27,
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "service": "snap",
+            "source": "raw_text"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I change my bank account for direct deposit?",
+      "expected_service": "cash_assistance",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "service": "unemployment",
+            "token_count": 32,
+            "source": "raw_text",
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "overlap": 50
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "source": "raw_text",
+            "service": "snap",
+            "overlap": 50,
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "token_count": 27
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Can I receive cash assistance for non-citizen household members?",
+      "expected_service": "cash_assistance",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "service": "unemployment",
+            "token_count": 32,
+            "source": "raw_text",
+            "overlap": 50,
+            "chunk_index": 0,
+            "chunk_size": 200
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "source": "raw_text",
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "token_count": 27,
+            "overlap": 50,
+            "service": "snap"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I appeal a cash assistance denial?",
+      "expected_service": "cash_assistance",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_index": 0,
+            "service": "unemployment",
+            "source": "raw_text",
+            "overlap": 50,
+            "token_count": 32,
+            "chunk_size": 200
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "service": "snap",
+            "source": "raw_text",
+            "token_count": 27,
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "overlap": 50
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What sanctions apply for missed appointments?",
+      "expected_service": "cash_assistance",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "overlap": 50,
+            "service": "unemployment",
+            "token_count": 32,
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "source": "raw_text"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "overlap": 50,
+            "chunk_size": 200,
+            "service": "snap",
+            "token_count": 27,
+            "chunk_index": 0,
+            "source": "raw_text"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I request an emergency cash grant?",
+      "expected_service": "cash_assistance",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "token_count": 32,
+            "overlap": 50,
+            "source": "raw_text",
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "service": "unemployment"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "service": "snap",
+            "source": "raw_text",
+            "chunk_size": 200,
+            "overlap": 50,
+            "token_count": 27,
+            "chunk_index": 0
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Can I get cash assistance if I'm homeless?",
+      "expected_service": "cash_assistance",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "service": "unemployment",
+            "token_count": 32,
+            "chunk_index": 0,
+            "source": "raw_text",
+            "overlap": 50,
+            "chunk_size": 200
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "token_count": 27,
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "service": "snap",
+            "overlap": 50,
+            "source": "raw_text"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I add a child to my case?",
+      "expected_service": "cash_assistance",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_index": 0,
+            "service": "unemployment",
+            "source": "raw_text",
+            "chunk_size": 200,
+            "token_count": 32,
+            "overlap": 50
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "service": "snap",
+            "chunk_index": 0,
+            "token_count": 27,
+            "overlap": 50,
+            "source": "raw_text",
+            "chunk_size": 200
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Are utilities included in the budget?",
+      "expected_service": "cash_assistance",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_index": 0,
+            "token_count": 32,
+            "overlap": 50,
+            "service": "unemployment",
+            "chunk_size": 200,
+            "source": "raw_text"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "source": "raw_text",
+            "overlap": 50,
+            "service": "snap",
+            "token_count": 27,
+            "chunk_size": 200,
+            "chunk_index": 0
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I find my cash assistance worker's contact?",
+      "expected_service": "cash_assistance",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "overlap": 50,
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "service": "unemployment",
+            "token_count": 32,
+            "source": "raw_text"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "token_count": 27,
+            "overlap": 50,
+            "source": "raw_text",
+            "service": "snap",
+            "chunk_index": 0,
+            "chunk_size": 200
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What budget deductions apply (e.g. shelter, childcare)?",
+      "expected_service": "cash_assistance",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "token_count": 32,
+            "source": "raw_text",
+            "service": "unemployment",
+            "overlap": 50
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "source": "raw_text",
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "overlap": 50,
+            "service": "snap",
+            "token_count": 27
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I renew my case after closure?",
+      "expected_service": "cash_assistance",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "token_count": 32,
+            "service": "unemployment",
+            "chunk_index": 0,
+            "overlap": 50,
+            "source": "raw_text",
+            "chunk_size": 200
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "token_count": 27,
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "source": "raw_text",
+            "service": "snap",
+            "overlap": 50
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I apply for child care subsidy in NYC?",
+      "expected_service": "childcare",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "overlap": 50,
+            "source": "raw_text",
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "token_count": 32,
+            "service": "unemployment"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "token_count": 27,
+            "overlap": 50,
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "service": "snap",
+            "source": "raw_text"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What income qualifies for child care assistance?",
+      "expected_service": "childcare",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_size": 200,
+            "token_count": 32,
+            "overlap": 50,
+            "chunk_index": 0,
+            "source": "raw_text",
+            "service": "unemployment"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "token_count": 27,
+            "chunk_index": 0,
+            "overlap": 50,
+            "chunk_size": 200,
+            "service": "snap",
+            "source": "raw_text"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I find approved daycare providers?",
+      "expected_service": "childcare",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "overlap": 50,
+            "chunk_size": 200,
+            "source": "raw_text",
+            "service": "unemployment",
+            "token_count": 32,
+            "chunk_index": 0
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "token_count": 27,
+            "service": "snap",
+            "overlap": 50,
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "source": "raw_text"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What documents are required for application?",
+      "expected_service": "childcare",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "service": "unemployment",
+            "chunk_size": 200,
+            "source": "raw_text",
+            "overlap": 50,
+            "token_count": 32,
+            "chunk_index": 0
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_size": 200,
+            "source": "raw_text",
+            "chunk_index": 0,
+            "overlap": 50,
+            "token_count": 27,
+            "service": "snap"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How long does the approval process take?",
+      "expected_service": "childcare",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "source": "raw_text",
+            "overlap": 50,
+            "token_count": 32,
+            "service": "unemployment"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "service": "snap",
+            "overlap": 50,
+            "chunk_index": 0,
+            "token_count": 27,
+            "chunk_size": 200,
+            "source": "raw_text"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Can I keep subsidy if I change providers?",
+      "expected_service": "childcare",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "overlap": 50,
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "service": "unemployment",
+            "source": "raw_text",
+            "token_count": 32
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "overlap": 50,
+            "source": "raw_text",
+            "service": "snap",
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "token_count": 27
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I report a change in work hours?",
+      "expected_service": "childcare",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "overlap": 50,
+            "chunk_index": 0,
+            "service": "unemployment",
+            "source": "raw_text",
+            "chunk_size": 200,
+            "token_count": 32
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "overlap": 50,
+            "chunk_size": 200,
+            "service": "snap",
+            "chunk_index": 0,
+            "source": "raw_text",
+            "token_count": 27
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What if my income increases mid-year?",
+      "expected_service": "childcare",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "overlap": 50,
+            "chunk_index": 0,
+            "source": "raw_text",
+            "token_count": 32,
+            "service": "unemployment",
+            "chunk_size": 200
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_size": 200,
+            "token_count": 27,
+            "source": "raw_text",
+            "overlap": 50,
+            "chunk_index": 0,
+            "service": "snap"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I check my subsidy payment status?",
+      "expected_service": "childcare",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "source": "raw_text",
+            "service": "unemployment",
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "overlap": 50,
+            "token_count": 32
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "service": "snap",
+            "source": "raw_text",
+            "chunk_index": 0,
+            "overlap": 50,
+            "token_count": 27,
+            "chunk_size": 200
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Can I use subsidy for after-school programs?",
+      "expected_service": "childcare",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_index": 0,
+            "overlap": 50,
+            "token_count": 32,
+            "source": "raw_text",
+            "service": "unemployment",
+            "chunk_size": 200
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_index": 0,
+            "source": "raw_text",
+            "chunk_size": 200,
+            "token_count": 27,
+            "overlap": 50,
+            "service": "snap"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I appeal a subsidy denial?",
+      "expected_service": "childcare",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "source": "raw_text",
+            "token_count": 32,
+            "chunk_size": 200,
+            "overlap": 50,
+            "service": "unemployment",
+            "chunk_index": 0
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "token_count": 27,
+            "chunk_size": 200,
+            "service": "snap",
+            "chunk_index": 0,
+            "source": "raw_text",
+            "overlap": 50
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Are summer camps covered?",
+      "expected_service": "childcare",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "overlap": 50,
+            "chunk_size": 200,
+            "source": "raw_text",
+            "token_count": 32,
+            "service": "unemployment",
+            "chunk_index": 0
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "overlap": 50,
+            "service": "snap",
+            "source": "raw_text",
+            "token_count": 27,
+            "chunk_index": 0,
+            "chunk_size": 200
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I enroll my child under age 2?",
+      "expected_service": "childcare",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "source": "raw_text",
+            "service": "unemployment",
+            "token_count": 32,
+            "overlap": 50,
+            "chunk_index": 0,
+            "chunk_size": 200
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_size": 200,
+            "overlap": 50,
+            "chunk_index": 0,
+            "service": "snap",
+            "source": "raw_text",
+            "token_count": 27
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What co\u2011payments apply?",
+      "expected_service": "childcare",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "service": "unemployment",
+            "source": "raw_text",
+            "overlap": 50,
+            "token_count": 32,
+            "chunk_index": 0,
+            "chunk_size": 200
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "source": "raw_text",
+            "chunk_size": 200,
+            "token_count": 27,
+            "service": "snap",
+            "chunk_index": 0,
+            "overlap": 50
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I find caseworker contact info?",
+      "expected_service": "childcare",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "overlap": 50,
+            "service": "unemployment",
+            "chunk_size": 200,
+            "chunk_index": 0,
+            "token_count": 32,
+            "source": "raw_text"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_index": 0,
+            "overlap": 50,
+            "source": "raw_text",
+            "chunk_size": 200,
+            "token_count": 27,
+            "service": "snap"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Can I get emergency child care assistance?",
+      "expected_service": "childcare",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "service": "unemployment",
+            "chunk_index": 0,
+            "chunk_size": 200,
+            "overlap": 50,
+            "token_count": 32,
+            "source": "raw_text"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_index": 0,
+            "token_count": 27,
+            "overlap": 50,
+            "service": "snap",
+            "source": "raw_text",
+            "chunk_size": 200
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Is transportation to daycare covered?",
+      "expected_service": "childcare",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "token_count": 32,
+            "overlap": 50,
+            "chunk_index": 0,
+            "service": "unemployment",
+            "source": "raw_text",
+            "chunk_size": 200
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_size": 200,
+            "service": "snap",
+            "chunk_index": 0,
+            "overlap": 50,
+            "token_count": 27,
+            "source": "raw_text"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "How do I renew my subsidy annually?",
+      "expected_service": "childcare",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "overlap": 50,
+            "chunk_size": 200,
+            "token_count": 32,
+            "service": "unemployment",
+            "source": "raw_text",
+            "chunk_index": 0
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "service": "snap",
+            "chunk_index": 0,
+            "overlap": 50,
+            "token_count": 27,
+            "chunk_size": 200,
+            "source": "raw_text"
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "What if my provider stops accepting subsidies?",
+      "expected_service": "childcare",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "chunk_size": 200,
+            "overlap": 50,
+            "chunk_index": 0,
+            "token_count": 32,
+            "service": "unemployment",
+            "source": "raw_text"
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "source": "raw_text",
+            "service": "snap",
+            "token_count": 27,
+            "overlap": 50,
+            "chunk_index": 0,
+            "chunk_size": 200
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    },
+    {
+      "query_text": "Are there priority slots for special\u2011needs children?",
+      "expected_service": "childcare",
+      "retrieved_service": "unemployment",
+      "is_successful": false,
+      "num_results": 3,
+      "results": [
+        {
+          "text": "What income limits apply to SNAP in New York? Income limits vary by household size and are updated annually. For a family of four, the gross monthly income limit is approximately $3,250.",
+          "metadata": {
+            "token_count": 32,
+            "overlap": 50,
+            "chunk_size": 200,
+            "source": "raw_text",
+            "service": "unemployment",
+            "chunk_index": 0
+          },
+          "distance": 16.548500061035156,
+          "id": "doc_6"
+        },
+        {
+          "text": "What income qualifies me for Medicaid? Income limits depend on household size and other factors. For a family of four, the monthly income limit is approximately $3,200.",
+          "metadata": {
+            "chunk_size": 200,
+            "overlap": 50,
+            "service": "snap",
+            "source": "raw_text",
+            "token_count": 27,
+            "chunk_index": 0
+          },
+          "distance": 16.549617767333984,
+          "id": "doc_11"
+        }
+      ]
+    }
+  ]
+}
