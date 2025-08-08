@@ -7,6 +7,8 @@ with a target ≥ 90% success rate as specified in PROJECT_SPEC.md.
 """
 
 import os
+import time
+import random
 from typing import List, Dict, Optional, Union
 from pathlib import Path
 import openai
@@ -53,22 +55,55 @@ class EmbeddingClient:
             print("⚠️ Using mock embeddings (no API key configured)")
             return [[0.1] * 1536 for _ in texts]
         
-        try:
-            # Generate embeddings using OpenAI API
-            response = openai.embeddings.create(
-                input=texts,
-                model=self.model
-            )
+        return self._get_embeddings_with_retry(texts)
+    
+    def _get_embeddings_with_retry(self, texts: List[str], max_retries: int = 3) -> List[List[float]]:
+        """
+        Generate embeddings with exponential backoff retry logic for rate limits.
+        
+        Args:
+            texts: List of text strings to embed
+            max_retries: Maximum number of retry attempts
             
-            embeddings = [embedding.embedding for embedding in response.data]
-            print(f"✅ Generated {len(embeddings)} embeddings using {self.model}")
-            return embeddings
-            
-        except Exception as e:
-            print(f"❌ Failed to generate embeddings: {e}")
-            print("⚠️ Falling back to mock embeddings")
-            # Return mock embeddings as fallback
-            return [[0.1] * 1536 for _ in texts]
+        Returns:
+            List of embedding vectors
+        """
+        for attempt in range(max_retries + 1):
+            try:
+                # Generate embeddings using OpenAI API
+                response = openai.embeddings.create(
+                    input=texts,
+                    model=self.model
+                )
+                
+                embeddings = [embedding.embedding for embedding in response.data]
+                print(f"✅ Generated {len(embeddings)} embeddings using {self.model}")
+                return embeddings
+                
+            except openai.RateLimitError as e:
+                if attempt < max_retries:
+                    # Exponential backoff with jitter
+                    wait_time = (2 ** attempt) + random.uniform(0, 1)
+                    print(f"⚠️ Rate limit hit, retrying in {wait_time:.1f}s (attempt {attempt + 1}/{max_retries + 1})")
+                    time.sleep(wait_time)
+                    continue
+                else:
+                    print(f"❌ Rate limit exceeded after {max_retries} retries")
+                    print("⚠️ Falling back to mock embeddings")
+                    return [[0.1] * 1536 for _ in texts]
+                    
+            except Exception as e:
+                print(f"❌ Failed to generate embeddings: {e}")
+                if attempt < max_retries:
+                    wait_time = 1 + random.uniform(0, 1)
+                    print(f"⚠️ Retrying in {wait_time:.1f}s (attempt {attempt + 1}/{max_retries + 1})")
+                    time.sleep(wait_time)
+                    continue
+                else:
+                    print("⚠️ Falling back to mock embeddings")
+                    return [[0.1] * 1536 for _ in texts]
+        
+        return [[0.1] * 1536 for _ in texts]
     
     def get_embedding(self, text: str) -> List[float]:
         """
