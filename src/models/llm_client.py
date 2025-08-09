@@ -2,8 +2,8 @@
 LLM Client for NYC Services GPT RAG System
 
 This module provides LLM integration for generating responses from retrieved documents.
-Uses OpenAI's GPT-4 model to generate helpful, accurate responses for NYC service queries,
-supporting the Self-Service Success Rate KPI by providing complete answers without human intervention.
+Uses OpenAI models with comprehensive rate limiting for MVP deployment.
+Supports the Self-Service Success Rate KPI by providing complete answers without human intervention.
 """
 
 import openai
@@ -11,6 +11,8 @@ import time
 import random
 from typing import List, Dict, Optional
 from ..config import config
+from .rate_limiter import rate_limiter
+from .mock_fallback import mock_fallback
 
 
 class LLMClient:
@@ -21,20 +23,20 @@ class LLMClient:
     accurate, helpful responses to NYC service queries without human intervention.
     """
     
-    def __init__(self, api_key: Optional[str] = None, model: str = "gpt-4"):
+    def __init__(self, api_key: Optional[str] = None, default_model: str = "gpt-4o-mini"):
         """
-        Initialize the LLM client.
+        Initialize the LLM client with rate limiting.
         
         Args:
             api_key: OpenAI API key (defaults to config)
-            model: LLM model to use (default: gpt-4)
+            default_model: Default model to use (gpt-4o-mini for MVP)
         """
         self.api_key = api_key or config.openai_api_key
-        self.model = model
+        self.default_model = default_model
         
         if self.api_key:
             openai.api_key = self.api_key
-            print(f"✅ LLM client initialized with model: {self.model}")
+            print(f"✅ LLM client initialized - Default: {self.default_model}, Rate limiting: enabled")
         else:
             print("⚠️ No OpenAI API key found. Using mock responses for testing.")
     
@@ -42,19 +44,21 @@ class LLMClient:
         self, 
         query: str, 
         retrieved_documents: List[Dict],
-        max_tokens: int = 500
+        max_tokens: int = 300,
+        task_hint: str = "",
+        allow_premium: bool = False
     ) -> Dict:
         """
         Generate a response to a user query based on retrieved documents.
         
-        This function is critical for the Self-Service Success Rate KPI as it
-        determines whether users get complete, helpful answers without needing
-        human intervention.
+        Uses intelligent model selection and rate limiting for MVP deployment.
         
         Args:
             query: User's original query
             retrieved_documents: List of relevant documents from vector store
-            max_tokens: Maximum tokens for response generation
+            max_tokens: Maximum tokens for response (reduced for MVP)
+            task_hint: Hint for model selection (e.g., "complex analysis")
+            allow_premium: Allow premium model usage
             
         Returns:
             Dictionary with response and metadata:
@@ -63,96 +67,128 @@ class LLMClient:
                 "confidence": float,       # Confidence score (0-1)
                 "sources_used": List[str], # Document sources used
                 "tokens_used": int,        # Tokens consumed
-                "model": str              # Model used for generation
+                "model": str,              # Model used for generation
+                "from_cache": bool         # Whether response came from cache
             }
         """
         if not self.api_key:
             return self._generate_mock_response(query, retrieved_documents)
         
-        return self._generate_response_with_retry(query, retrieved_documents, max_tokens)
+        # Choose appropriate model based on task complexity
+        model = rate_limiter.choose_model(task_hint, allow_premium)
+        
+        return self._generate_response_with_rate_limiting(
+            query, retrieved_documents, max_tokens, model
+        )
     
-    def _generate_response_with_retry(
+    def _generate_response_with_rate_limiting(
         self, 
         query: str, 
         retrieved_documents: List[Dict],
-        max_tokens: int = 500,
-        max_retries: int = 3
+        max_tokens: int = 300,
+        model: str = "gpt-4o-mini"
     ) -> Dict:
         """
-        Generate response with exponential backoff retry logic for rate limits.
+        Generate response with comprehensive rate limiting and caching.
         
         Args:
             query: User query
             retrieved_documents: Retrieved documents
             max_tokens: Maximum tokens for response
-            max_retries: Maximum number of retry attempts
+            model: Model to use for generation
             
         Returns:
-            Response dictionary
+            Response dictionary with rate limiting metadata
         """
-        for attempt in range(max_retries + 1):
+        # Prepare context and prompts
+        context = self._prepare_context(retrieved_documents)
+        system_prompt = self._create_system_prompt()
+        user_prompt = self._create_user_prompt(query, context)
+        
+        # Create messages for API call
+        messages = [
+            {"role": "system", "content": system_prompt[:2000]},  # Limit system prompt
+            {"role": "user", "content": user_prompt}
+        ]
+        
+        # Check cache first (development only)
+        cache_key = rate_limiter.get_cache_key(model, messages, max_tokens=max_tokens)
+        cached_response = rate_limiter.get_cached_response(cache_key)
+        if cached_response:
+            return cached_response
+        
+        # Estimate token usage
+        estimated_tokens = sum(rate_limiter.estimate_tokens(msg["content"]) for msg in messages)
+        estimated_tokens += max_tokens  # Add expected output tokens
+        
+        # Wait for capacity if needed
+        rate_limiter.wait_for_capacity(model, estimated_tokens)
+        
+        # Attempt API call with exponential backoff
+        for attempt in range(rate_limiter.max_retries + 1):
             try:
-                # Prepare context from retrieved documents
-                context = self._prepare_context(retrieved_documents)
-                
-                # Create system prompt for NYC services
-                system_prompt = self._create_system_prompt()
-                
-                # Create user prompt with query and context
-                user_prompt = self._create_user_prompt(query, context)
-                
-                # Generate response using OpenAI API
                 response = openai.chat.completions.create(
-                    model=self.model,
-                    messages=[
-                        {"role": "system", "content": system_prompt},
-                        {"role": "user", "content": user_prompt}
-                    ],
+                    model=model,
+                    messages=messages,
                     max_tokens=max_tokens,
-                    temperature=0.3,  # Lower temperature for more consistent responses
+                    temperature=0.3,
                     top_p=0.9
                 )
                 
+                # Extract response data
                 generated_response = response.choices[0].message.content
-                tokens_used = response.usage.total_tokens
+                usage = response.usage
+                input_tokens = usage.prompt_tokens if usage else estimated_tokens - max_tokens
+                output_tokens = usage.completion_tokens if usage else rate_limiter.estimate_tokens(generated_response)
                 
-                # Extract sources used
+                # Record usage for rate limiting
+                rate_limiter.record_usage(model, input_tokens, output_tokens)
+                
+                # Extract sources and calculate confidence
                 sources_used = [doc.get("metadata", {}).get("source", "unknown") 
                               for doc in retrieved_documents]
-                
-                # Calculate confidence based on document relevance
                 confidence = self._calculate_confidence(retrieved_documents)
                 
-                return {
+                result = {
                     "response": generated_response,
                     "confidence": confidence,
                     "sources_used": sources_used,
-                    "tokens_used": tokens_used,
-                    "model": self.model
+                    "tokens_used": input_tokens + output_tokens,
+                    "model": model,
+                    "from_cache": False
                 }
                 
+                # Cache the response (development only)
+                rate_limiter.cache_response(cache_key, result)
+                
+                return result
+                
             except openai.RateLimitError as e:
-                if attempt < max_retries:
-                    # Exponential backoff with jitter
-                    wait_time = (2 ** attempt) + random.uniform(0, 1)
-                    print(f"⚠️ Rate limit hit, retrying in {wait_time:.1f}s (attempt {attempt + 1}/{max_retries + 1})")
+                if attempt < rate_limiter.max_retries:
+                    # Use rate limiter's exponential backoff
+                    wait_time = rate_limiter.exponential_backoff(attempt + 1)
+                    print(f"⚠️ Rate limit hit, retrying in {wait_time:.1f}s (attempt {attempt + 1}/{rate_limiter.max_retries})")
                     time.sleep(wait_time)
                     continue
                 else:
-                    print(f"❌ Rate limit exceeded after {max_retries} retries")
-                    return self._generate_mock_response(query, retrieved_documents)
+                    print(f"❌ Rate limit exceeded after {rate_limiter.max_retries} retries")
+                    mock_fallback.activate_fallback("rate_limit_exceeded")
+                    return mock_fallback.get_mock_llm_response(query, retrieved_documents)
                     
             except Exception as e:
                 print(f"❌ Failed to generate response: {e}")
-                if attempt < max_retries:
-                    wait_time = 1 + random.uniform(0, 1)
-                    print(f"⚠️ Retrying in {wait_time:.1f}s (attempt {attempt + 1}/{max_retries + 1})")
+                if attempt < rate_limiter.max_retries:
+                    wait_time = rate_limiter.exponential_backoff(attempt + 1)
+                    print(f"⚠️ Retrying in {wait_time:.1f}s (attempt {attempt + 1}/{rate_limiter.max_retries})")
                     time.sleep(wait_time)
                     continue
                 else:
-                    return self._generate_mock_response(query, retrieved_documents)
+                    mock_fallback.activate_fallback("api_error")
+                    return mock_fallback.get_mock_llm_response(query, retrieved_documents)
         
-        return self._generate_mock_response(query, retrieved_documents)
+        # Final fallback
+        mock_fallback.activate_fallback("unknown_error")
+        return mock_fallback.get_mock_llm_response(query, retrieved_documents)
     
     def _create_system_prompt(self) -> str:
         """

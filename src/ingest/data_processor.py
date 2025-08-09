@@ -14,6 +14,8 @@ from pathlib import Path
 import openai
 
 from .chunker import chunk_documents
+from ..models.rate_limiter import rate_limiter
+from ..models.mock_fallback import mock_fallback
 from ..config import config
 
 
@@ -57,53 +59,77 @@ class EmbeddingClient:
         
         return self._get_embeddings_with_retry(texts)
     
-    def _get_embeddings_with_retry(self, texts: List[str], max_retries: int = 3) -> List[List[float]]:
+    def _get_embeddings_with_retry(self, texts: List[str]) -> List[List[float]]:
         """
-        Generate embeddings with exponential backoff retry logic for rate limits.
+        Generate embeddings with comprehensive rate limiting and caching.
         
         Args:
             texts: List of text strings to embed
-            max_retries: Maximum number of retry attempts
             
         Returns:
             List of embedding vectors
         """
-        for attempt in range(max_retries + 1):
+        # Check cache first (development only)
+        cache_key = rate_limiter.get_cache_key(self.model, texts)
+        cached_response = rate_limiter.get_cached_response(cache_key)
+        if cached_response and "embeddings" in cached_response:
+            print(f"✅ Retrieved {len(texts)} embeddings from cache")
+            return cached_response["embeddings"]
+        
+        # Estimate token usage for rate limiting
+        estimated_tokens = sum(rate_limiter.estimate_tokens(text) for text in texts)
+        
+        # Wait for capacity if needed
+        rate_limiter.wait_for_capacity(self.model, estimated_tokens)
+        
+        # Attempt API call with exponential backoff
+        for attempt in range(rate_limiter.max_retries + 1):
             try:
-                # Generate embeddings using OpenAI API
                 response = openai.embeddings.create(
                     input=texts,
                     model=self.model
                 )
                 
                 embeddings = [embedding.embedding for embedding in response.data]
+                
+                # Record usage for rate limiting
+                input_tokens = response.usage.total_tokens if response.usage else estimated_tokens
+                rate_limiter.record_usage(self.model, input_tokens, 0)  # No output tokens for embeddings
+                
                 print(f"✅ Generated {len(embeddings)} embeddings using {self.model}")
+                
+                # Cache the response (development only)
+                cache_response = {"embeddings": embeddings}
+                rate_limiter.cache_response(cache_key, cache_response)
+                
                 return embeddings
                 
             except openai.RateLimitError as e:
-                if attempt < max_retries:
-                    # Exponential backoff with jitter
-                    wait_time = (2 ** attempt) + random.uniform(0, 1)
-                    print(f"⚠️ Rate limit hit, retrying in {wait_time:.1f}s (attempt {attempt + 1}/{max_retries + 1})")
+                if attempt < rate_limiter.max_retries:
+                    # Use rate limiter's exponential backoff
+                    wait_time = rate_limiter.exponential_backoff(attempt + 1)
+                    print(f"⚠️ Rate limit hit, retrying in {wait_time:.1f}s (attempt {attempt + 1}/{rate_limiter.max_retries})")
                     time.sleep(wait_time)
                     continue
                 else:
-                    print(f"❌ Rate limit exceeded after {max_retries} retries")
-                    print("⚠️ Falling back to mock embeddings")
-                    return [[0.1] * 1536 for _ in texts]
+                    print(f"❌ Rate limit exceeded after {rate_limiter.max_retries} retries")
+                    mock_fallback.activate_fallback("rate_limit_exceeded")
+                    return mock_fallback.get_mock_embeddings(texts)
                     
             except Exception as e:
                 print(f"❌ Failed to generate embeddings: {e}")
-                if attempt < max_retries:
-                    wait_time = 1 + random.uniform(0, 1)
-                    print(f"⚠️ Retrying in {wait_time:.1f}s (attempt {attempt + 1}/{max_retries + 1})")
+                if attempt < rate_limiter.max_retries:
+                    wait_time = rate_limiter.exponential_backoff(attempt + 1)
+                    print(f"⚠️ Retrying in {wait_time:.1f}s (attempt {attempt + 1}/{rate_limiter.max_retries})")
                     time.sleep(wait_time)
                     continue
                 else:
-                    print("⚠️ Falling back to mock embeddings")
-                    return [[0.1] * 1536 for _ in texts]
+                    mock_fallback.activate_fallback("api_error")
+                    return mock_fallback.get_mock_embeddings(texts)
         
-        return [[0.1] * 1536 for _ in texts]
+        # Final fallback
+        mock_fallback.activate_fallback("unknown_error")
+        return mock_fallback.get_mock_embeddings(texts)
     
     def get_embedding(self, text: str) -> List[float]:
         """
