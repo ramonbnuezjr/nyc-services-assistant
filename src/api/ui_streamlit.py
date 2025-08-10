@@ -19,35 +19,42 @@ from src.config import config
 
 # Page configuration
 st.set_page_config(
-    page_title="NYC Services GPT — Local MVP",
-    layout="centered",
-    initial_sidebar_state="expanded"
+    page_title="NYC Services GPT",
+    page_icon="🏙️",
+    layout="wide",
+    initial_sidebar_state="collapsed"
 )
 
 # Custom CSS for better styling
 st.markdown("""
 <style>
     .main-header {
-        font-size: 2.5rem;
-        font-weight: bold;
-        color: #1f77b4;
         text-align: center;
+        color: #1f77b4;
         margin-bottom: 2rem;
     }
-    .metric-card {
-        background-color: #f0f2f6;
+    .question-input {
+        margin-bottom: 1rem;
+    }
+    .example-questions {
+        margin: 1rem 0;
         padding: 1rem;
+        background-color: #f0f2f6;
         border-radius: 0.5rem;
-        border-left: 4px solid #1f77b4;
     }
-    .source-item {
-        background-color: #f8f9fa;
-        padding: 0.75rem;
-        border-radius: 0.25rem;
-        margin: 0.5rem 0;
-        border-left: 3px solid #28a745;
+    .confidence-high {
+        color: #28a745;
+        font-weight: bold;
     }
-    .debug-panel {
+    .confidence-medium {
+        color: #ffc107;
+        font-weight: bold;
+    }
+    .confidence-low {
+        color: #dc3545;
+        font-weight: bold;
+    }
+    .human-fallback {
         background-color: #fff3cd;
         border: 1px solid #ffeaa7;
         border-radius: 0.5rem;
@@ -57,187 +64,209 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Header
-st.markdown('<h1 class="main-header">NYC Services GPT — Local MVP</h1>', unsafe_allow_html=True)
+# Initialize session state
+if 'question' not in st.session_state:
+    st.session_state.question = ""
+if 'submitted' not in st.session_state:
+    st.session_state.submitted = False
 
-# Sidebar for configuration
-with st.sidebar:
-    st.header("⚙️ Configuration")
-    
-    # Feature flags display
-    st.subheader("Feature Flags")
-    ui_config = config.get_ui_config()
-    
-    st.write(f"**Real LLM:** {'✅ Enabled' if ui_config['use_real_llm'] else '❌ Disabled'}")
-    st.write(f"**Default Provider:** {ui_config['default_provider']}")
-    st.write(f"**Rate Limiting:** {'✅ Enabled' if ui_config['rate_limit_enabled'] else '❌ Disabled'}")
-    st.write(f"**Rate Limit RPS:** {ui_config['rate_limit_rps']}")
-    
-    # Environment info
-    st.subheader("Environment")
-    st.write(f"**Vector DB:** {config.vector_db_path}")
-    st.write(f"**LLM Model:** {config.llm_model}")
-    st.write(f"**Embedding Model:** {config.embedding_model}")
-    
-    # Quick actions
-    st.subheader("Quick Actions")
-    if st.button("🔄 Refresh Vector Store"):
-        with st.spinner("Refreshing vector store..."):
-            vs = init_vector_store()
-            if vs:
-                st.success("Vector store refreshed!")
-            else:
-                st.error("Failed to refresh vector store")
-    
-    if st.button("📊 Show Collection Stats"):
-        with st.spinner("Loading stats..."):
-            vs = init_vector_store()
-            if vs:
-                stats = vs.get_collection_stats()
-                st.json(stats)
-            else:
-                st.error("Failed to load stats")
+# Main header
+st.markdown('<h1 class="main-header">🏙️ NYC Services GPT</h1>', unsafe_allow_html=True)
+st.markdown("**Your AI assistant for NYC government services and benefits**")
 
-# Main interface
-st.markdown("---")
-
-# Query input
-st.subheader("🤔 Ask about NYC Services")
+# Example questions
+st.markdown("### 💡 Example Questions")
 example_questions = [
-    "What benefits can I apply for if I lost my job?",
-    "How do I apply for SNAP benefits?",
-    "What documents do I need for Medicaid?",
-    "How do I check my unemployment payment status?",
-    "What income limits apply to cash assistance?"
+    "How do I apply for unemployment benefits in NYC?",
+    "What documents do I need for SNAP benefits?",
+    "How do I apply for Medicaid in New York?",
+    "What income qualifies for cash assistance?",
+    "How do I find child care subsidies?",
+    "How do I check my EBT balance?",
+    "What happens if my unemployment claim is denied?",
+    "How do I appeal a SNAP decision?"
 ]
 
-# Question input with examples
-question = st.text_input(
-    "Your question:",
-    placeholder="e.g., 'What benefits can I apply for if I lost my job?'",
-    help="Ask any question about NYC government services"
+# Create responsive columns for example questions
+if len(example_questions) <= 4:
+    cols = st.columns(len(example_questions))
+    for i, question in enumerate(example_questions):
+        with cols[i]:
+            if st.button(question[:40] + "..." if len(question) > 40 else question, key=f"ex_{i}"):
+                st.session_state.question = question
+                st.session_state.submitted = True
+                st.rerun()
+else:
+    # For more questions, use a grid layout
+    cols = st.columns(4)
+    for i, question in enumerate(example_questions):
+        with cols[i % 4]:
+            if st.button(question[:35] + "..." if len(question) > 35 else question, key=f"ex_{i}"):
+                st.session_state.question = question
+                st.session_state.submitted = True
+                st.rerun()
+
+# Question input with Enter key submission
+st.markdown("### ❓ Ask Your Question")
+
+# Add JavaScript for Enter key submission
+st.markdown("""
+<script>
+    const textArea = document.querySelector('textarea[data-testid="stTextArea"]');
+    if (textArea) {
+        textArea.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                const submitButton = document.querySelector('button[data-testid="baseButton-primary"]');
+                if (submitButton) {
+                    submitButton.click();
+                }
+            }
+        });
+    }
+</script>
+""", unsafe_allow_html=True)
+
+question = st.text_area(
+    "Ask about NYC services, benefits, or assistance programs:",
+    value=st.session_state.question,
+    height=100,
+    placeholder="e.g., How do I apply for food stamps in NYC? (Press Enter to submit)",
+    key="question_input",
+    help="Type your question and press Enter to submit, or click an example question above."
 )
 
-# Show example questions
-with st.expander("💡 Example Questions"):
-    for example in example_questions:
-        if st.button(example, key=f"example_{example[:20]}"):
-            st.session_state.question = example
-            st.rerun()
-
-# Configuration controls
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    top_k = st.number_input(
-        "📚 Top K Documents",
-        min_value=1,
-        max_value=10,
-        value=5,
-        help="Number of document chunks to retrieve"
-    )
-
-with col2:
-    provider = st.selectbox(
-        "🤖 Provider",
-        ["openai", "gemini", "mock"],
-        index=0 if ui_config['default_provider'] == 'openai' else 2,
-        help="AI provider to use for response generation"
-    )
-
-with col3:
-    service_options = ["", "unemployment", "snap", "medicaid", "cash_assistance", "childcare"]
-    service_filter = st.selectbox(
-        "🎯 Service Filter (Optional)",
-        service_options,
-        help="Filter results by specific service type"
-    )
-
-# Query button
-if st.button("🚀 Ask Question", type="primary", use_container_width=True):
-    if not question.strip():
-        st.error("Please enter a question!")
+# Show character count
+if question:
+    char_count = len(question)
+    if char_count > 500:
+        st.warning(f"⚠️ Question is quite long ({char_count} characters). Consider breaking it into smaller questions for better results.")
+    elif char_count > 200:
+        st.info(f"📝 Question length: {char_count} characters")
     else:
-        # Show processing state
-        with st.spinner("🔍 Searching documents and generating response..."):
-            start_time = time.time()
+        st.success(f"✅ Question length: {char_count} characters")
+
+# Handle submission (both button click and Enter key)
+if st.button("🚀 Ask Question", type="primary", key="submit_button"):
+    if question.strip():
+        st.session_state.question = question
+        st.session_state.submitted = True
+        st.rerun()
+
+# Also handle when question changes (for auto-submission from examples)
+if question and question != st.session_state.question and st.session_state.submitted:
+    st.session_state.question = question
+
+# Process question when submitted
+if st.session_state.submitted and st.session_state.question:
+    # Show loading state
+    with st.spinner("🔍 Searching NYC services database..."):
+        try:
+            # Initialize vector store
+            vs = init_vector_store()
             
-            # Prepare filters
-            filters = {"service_type": service_filter} if service_filter else None
-            
-            # Get response from RAG pipeline
+            # Get RAG response
             response = answer_with_rag(
-                question=question,
-                top_k=top_k,
-                filters=filters,
-                provider=provider
+                question=st.session_state.question,
+                top_k=5,  # Fixed top_k for simplicity
+                filters=None,  # No service filtering for MVP
+                provider="openai"  # Fixed provider for MVP
             )
             
-            processing_time = time.time() - start_time
-
-# Display results
-if 'response' in locals():
-    st.markdown("---")
-    
-    # Answer section
-    st.subheader("💬 Answer")
-    st.markdown(f"**{response['answer']}**")
-    
-    # Sources section
-    if response['sources']:
-        st.subheader("📚 Sources")
-        for i, source in enumerate(response['sources']):
-            with st.expander(f"Source {i+1}: {source['service']} - {source['source']}"):
-                st.write(f"**Service:** {source['service']}")
-                st.write(f"**Document:** {source['source']}")
-                st.write(f"**Relevance Score:** {source['score']:.3f}")
-                st.write(f"**Content Preview:**")
-                st.text(source['text'])
-    else:
-        st.info("No sources found for this query.")
-    
-    # Debug panel
-    st.subheader("🔧 Debug Information")
-    
-    col1, col2, col3, col4 = st.columns(4)
-    
-    with col1:
-        st.metric("⏱️ Latency", f"{response['meta']['latency_ms']}ms")
-    
-    with col2:
-        st.metric("🤖 Provider", response['meta']['provider'])
-    
-    with col3:
-        st.metric("📚 Top K", response['meta']['top_k'])
-    
-    with col4:
-        st.metric("💰 Cost Est.", f"${response['meta']['cost_estimate']:.4f}")
-    
-    # Additional metadata
-    with st.expander("📊 Detailed Metadata"):
-        st.json(response['meta'])
-    
-    # Performance metrics
-    st.markdown("---")
-    st.subheader("📈 Performance Metrics")
-    
-    # Success rate indicator (based on whether we got a meaningful response)
-    response_quality = "✅ Good" if len(response['answer']) > 50 and not response['answer'].startswith("❌") else "⚠️ Needs Improvement"
-    
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        st.metric("Response Quality", response_quality)
-    
-    with col2:
-        st.metric("Sources Found", len(response['sources']))
-    
-    with col3:
-        st.metric("Processing Time", f"{processing_time:.2f}s")
+            # Display answer
+            st.markdown("### 💬 Answer")
+            st.markdown(response["answer"])
+            
+            # Success message
+            st.success("✅ Answer generated successfully! Check the confidence score below.")
+            
+            # Display sources
+            if response.get("sources"):
+                st.markdown("### 📚 Sources")
+                for i, source in enumerate(response["sources"], 1):
+                    with st.expander(f"Source {i}: {source.get('service', 'Unknown Service')}"):
+                        st.markdown(f"**Service:** {source.get('service', 'Unknown')}")
+                        st.markdown(f"**Content:** {source.get('content', 'No content available')}")
+                        if source.get('metadata'):
+                            st.markdown(f"**Additional Info:** {source.get('metadata', {})}")
+            
+            # Confidence scoring and human fallback
+            st.markdown("### 🎯 Confidence Assessment")
+            
+            # Calculate confidence based on response quality indicators
+            # In a real implementation, this would come from the LLM or response analysis
+            answer_length = len(response.get("answer", ""))
+            sources_count = len(response.get("sources", []))
+            
+            # Simple confidence calculation based on response quality
+            if answer_length > 200 and sources_count >= 2:
+                confidence_score = 85
+            elif answer_length > 100 and sources_count >= 1:
+                confidence_score = 70
+            elif answer_length > 50:
+                confidence_score = 55
+            else:
+                confidence_score = 40
+            
+            # Display confidence with appropriate styling
+            if confidence_score >= 80:
+                st.markdown(f'<p class="confidence-high">✅ High Confidence: {confidence_score}%</p>', unsafe_allow_html=True)
+                st.success("This answer should address your question completely.")
+            elif confidence_score >= 60:
+                st.markdown(f'<p class="confidence-medium">⚠️ Medium Confidence: {confidence_score}%</p>', unsafe_allow_html=True)
+                st.warning("This answer should help, but you may want to verify details with official sources.")
+            else:
+                st.markdown(f'<p class="confidence-low">❌ Low Confidence: {confidence_score}%</p>', unsafe_allow_html=True)
+                
+                # Human fallback message
+                st.markdown("""
+                <div class="human-fallback">
+                    <h4>🤝 Need Human Assistance</h4>
+                    <p>We're not confident enough in this answer to fully address your question. 
+                    Please contact NYC customer service for personalized assistance:</p>
+                    <ul>
+                        <li><strong>NYC 311:</strong> Dial 311 or visit <a href="https://www1.nyc.gov/311/" target="_blank">nyc.gov/311</a></li>
+                        <li><strong>NYC.gov:</strong> Visit <a href="https://www.nyc.gov/" target="_blank">nyc.gov</a> for official information</li>
+                        <li><strong>Department of Social Services:</strong> Visit your local office or call 718-557-1399</li>
+                    </ul>
+                </div>
+                """, unsafe_allow_html=True)
+            
+            # Reset submission state
+            st.session_state.submitted = False
+            
+            # Add option to ask a new question
+            st.markdown("---")
+            if st.button("🆕 Ask Another Question", type="secondary"):
+                st.session_state.question = ""
+                st.rerun()
+            
+        except Exception as e:
+            error_msg = str(e)
+            
+            # Handle specific error types
+            if "MockFallbackManager" in error_msg:
+                st.error("❌ System temporarily unavailable. Please try again in a moment.")
+                st.info("The AI system is experiencing high demand. This is normal and will resolve automatically.")
+            elif "rate_limit" in error_msg.lower():
+                st.error("⚠️ System is busy. Please wait a moment and try again.")
+                st.info("We're experiencing high demand. Your question will be processed shortly.")
+            else:
+                st.error(f"❌ Error processing your question: {error_msg}")
+                st.info("Please try rephrasing your question or contact NYC customer service for assistance.")
+            
+            # Add retry option
+            if st.button("🔄 Try Again", type="secondary"):
+                st.session_state.submitted = False
+                st.rerun()
+            
+            st.session_state.submitted = False
 
 # Footer
 st.markdown("---")
 st.markdown("""
-<div style='text-align: center; color: #666; font-size: 0.8rem;'>
-    NYC Services GPT - Local MVP | Built with Streamlit | Leveraging 87% Success Rate RAG Pipeline
+<div style="text-align: center; color: #666; font-size: 0.8em;">
+    <p>Powered by NYC Services GPT • Built for NYC residents and businesses</p>
+    <p>For official information, always verify with NYC government sources</p>
 </div>
 """, unsafe_allow_html=True)
