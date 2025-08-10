@@ -7,7 +7,7 @@ Supports 100 synthetic queries across 5 NYC services (Unemployment, SNAP, Medica
 """
 
 import re
-from typing import List, Union
+from typing import List, Union, Iterator
 from pathlib import Path
 
 def simple_tokenize(text: str) -> List[str]:
@@ -101,6 +101,87 @@ def chunk_text(text: str, chunk_size: int = 1000, overlap: int = 200) -> List[st
         List of text chunks
     """
     return chunk_documents([text], chunk_size, overlap)
+
+def chunk_large_text_streaming(text: str, chunk_size: int = 500, overlap: int = 50) -> Iterator[str]:
+    """
+    Stream chunks from large text to avoid memory issues.
+    
+    This function yields chunks one at a time instead of storing them all in memory.
+    Ideal for processing very large documents like welcome_english.pdf.
+    
+    Args:
+        text: Input text to chunk
+        chunk_size: Maximum tokens per chunk (default: 500 for large docs)
+        overlap: Overlapping tokens between chunks (default: 50 for large docs)
+        
+    Yields:
+        Text chunks one at a time
+    """
+    # Split text into lines first to preserve document structure
+    lines = text.split('\n')
+    current_chunk = []
+    current_tokens = 0
+    
+    for line in lines:
+        line_tokens = simple_tokenize(line)
+        line_token_count = len(line_tokens)
+        
+        # If adding this line would exceed chunk size, yield current chunk
+        if current_tokens + line_token_count > chunk_size and current_chunk:
+            chunk_text = '\n'.join(current_chunk)
+            yield chunk_text
+            
+            # Start new chunk with overlap
+            if overlap > 0 and current_chunk:
+                # Keep last few lines for overlap
+                overlap_lines = []
+                overlap_tokens = 0
+                for line_back in reversed(current_chunk):
+                    line_back_tokens = simple_tokenize(line_back)
+                    if overlap_tokens + len(line_back_tokens) <= overlap:
+                        overlap_lines.insert(0, line_back)
+                        overlap_tokens += len(line_back_tokens)
+                    else:
+                        break
+                current_chunk = overlap_lines
+                current_tokens = overlap_tokens
+            else:
+                current_chunk = []
+                current_tokens = 0
+        
+        # Add current line to chunk
+        current_chunk.append(line)
+        current_tokens += line_token_count
+    
+    # Yield final chunk if there's content
+    if current_chunk:
+        chunk_text = '\n'.join(current_chunk)
+        yield chunk_text
+
+def chunk_large_text_batched(text: str, chunk_size: int = 500, overlap: int = 50, batch_size: int = 10) -> Iterator[List[str]]:
+    """
+    Process large text in batches to control memory usage.
+    
+    Args:
+        text: Input text to chunk
+        chunk_size: Maximum tokens per chunk
+        overlap: Overlapping tokens between chunks
+        batch_size: Number of chunks to yield per batch
+        
+    Yields:
+        Lists of text chunks, batch_size chunks at a time
+    """
+    chunks = []
+    for chunk in chunk_large_text_streaming(text, chunk_size, overlap):
+        chunks.append(chunk)
+        
+        if len(chunks) >= batch_size:
+            yield chunks
+            chunks = []
+    
+    # Yield remaining chunks
+    if chunks:
+        yield chunks
 
 def validate_chunks(chunks: List[str], max_tokens: int = 1000) -> bool:
     """
