@@ -32,6 +32,13 @@ class Config:
         self.api_host = os.getenv("API_HOST", "0.0.0.0")
         self.api_port = int(os.getenv("API_PORT", "5000"))
         self.debug_mode = os.getenv("DEBUG_MODE", "True").lower() == "true"
+        
+        # Feature Flags for MVP UI
+        self.use_real_llm = os.getenv("USE_REAL_LLM", "true").lower() == "true"
+        self.default_provider = os.getenv("DEFAULT_PROVIDER", "openai")
+        self.rate_limit_enabled = os.getenv("RATE_LIMIT_ENABLED", "true").lower() == "true"
+        self.rate_limit_rps = int(os.getenv("RATE_LIMIT_RPS", "5"))
+        self.allowlist = os.getenv("ALLOWLIST", "127.0.0.1,::1").split(",")
     
     def _get_api_key(self, key_name: str) -> Optional[str]:
         """Safely get API key from environment"""
@@ -87,6 +94,16 @@ class Config:
             "host": self.api_host,
             "port": self.api_port,
             "debug": self.debug_mode
+        }
+    
+    def get_ui_config(self) -> dict:
+        """Get UI configuration with feature flags"""
+        return {
+            "use_real_llm": self.use_real_llm,
+            "default_provider": self.default_provider,
+            "rate_limit_enabled": self.rate_limit_enabled,
+            "rate_limit_rps": self.rate_limit_rps,
+            "allowlist": self.allowlist
         }
 
 # Global configuration instance
